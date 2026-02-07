@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>U2 - My Body | Nova's Lab</title>
+    <style>
+        /* Unit 2 专属配色：充满活力的身体红 */
+        :root { 
+            --primary: #FF6B6B; 
+            --bg: #FFF5F5; 
+            --accent: #FF8787;
+            --text: #483434;
+        }
+
+        body { 
+            font-family: 'Comic Sans MS', 'PingFang SC', sans-serif; 
+            background: var(--bg); 
+            margin: 0; padding: 20px; 
+            display: flex; flex-direction: column; align-items: center; 
+        }
+
+        /* 顶部主题头 */
+        .header { 
+            width: 100%; max-width: 500px; text-align: center; margin-bottom: 25px; 
+            padding: 20px; background: white; border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(255,107,107,0.1);
+        }
+        .badge { 
+            background: var(--primary); color: white; padding: 4px 15px; 
+            border-radius: 20px; font-size: 13px; font-weight: bold;
+            display: inline-block; margin-bottom: 10px;
+        }
+        h1 { color: var(--text); margin: 0; font-size: 26px; }
+        .back-home { text-decoration: none; color: var(--primary); font-size: 14px; font-weight: bold; margin-top: 10px; display: block; }
+
+        /* 单词卡片容器 */
+        .container { width: 100%; max-width: 500px; display: grid; gap: 15px; }
+
+        /* 单词卡片样式 */
+        .card { 
+            background: white; border-radius: 25px; padding: 22px; 
+            display: flex; align-items: center; 
+            box-shadow: 0 5px 15px rgba(255,107,107,0.05); 
+            border: 2px solid transparent; transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer; position: relative; overflow: hidden;
+        }
+        
+        /* 点击时的反馈效果 */
+        .card:active { transform: scale(0.95); border-color: var(--primary); background: #FFF0F0; }
+
+        .info { flex: 1; }
+        .en { font-size: 24px; font-weight: bold; color: #2D3436; letter-spacing: 0.5px; }
+        .ipa { font-size: 14px; color: #A0A0A0; font-family: 'Arial'; margin: 4px 0; }
+        .zh { font-size: 17px; color: #636E72; font-weight: 500; }
+
+        /* 装饰图标 */
+        .play-icon { font-size: 24px; color: var(--primary); opacity: 0.6; }
+
+        /* 底部导航栏 */
+        .nav { 
+            position: fixed; bottom: 0; width: 100%; max-width: 500px; 
+            background: white; display: flex; border-top: 1px solid #FFE5E5; 
+            box-shadow: 0 -5px 15px rgba(255,107,107,0.05);
+        }
+        .nav-item { flex: 1; text-align: center; padding: 18px; text-decoration: none; color: #DDD; font-weight: bold; }
+        .nav-item.active { color: var(--primary); border-top: 4px solid var(--primary); }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <span class="badge">💪 My Body & Health</span>
+        <h1>Unit 2: My Body</h1>
+        <a href="../index.html" class="back-home">⇠ 返回实验室首页</a>
+    </div>
+
+    <div class="container" id="word-list">
+        </div>
+
+    <div style="height: 90px;"></div>
+
+    <nav class="nav">
+        <a href="#" class="nav-item active">Words 单词</a>
+        <a id="exp-btn" href="../expressions.html?u=unit2" class="nav-item">Expressions 表达</a>
+    </nav>
+
+    <script>
+        // 强制英音发音 (type=2)
+        function speak(text) {
+            const audioUrl = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=2`;
+            const audio = new Audio(audioUrl);
+            audio.play();
+        }
+
+        // 初始化加载数据
+        async function loadWords() {
+            const listContainer = document.getElementById('word-list');
+            try {
+                // 读取同文件夹下的 data.json
+                const response = await fetch('data.json');
+                const words = await response.json();
+                
+                listContainer.innerHTML = '';
+                words.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.onclick = () => speak(item.word);
+                    card.innerHTML = `
+                        <div class="info">
+                            <div class="en">${item.word}</div>
+                            <div class="ipa">${item.ipa}</div>
+                            <div class="zh">${item.chinese}</div>
+                        </div>
+                        <div class="play-icon">📢</div>
+                    `;
+                    listContainer.appendChild(card);
+                });
+            } catch (error) {
+                listContainer.innerHTML = `<div style="text-align:center;color:red;">数据加载失败，请确保 data.json 在 unit2 文件夹内</div>`;
+            }
+        }
+
+        // 解决 iOS/Android 移动端首按不发音的黑科技补丁
+        document.addEventListener('touchstart', () => {
+            // 在用户第一次触摸时，静默播放一个空语音，唤醒音频上下文
+            window.speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        }, { once: true });
+
+        loadWords();
+    </script>
+</body>
+</html>
