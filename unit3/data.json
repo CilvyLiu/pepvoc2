@@ -1,0 +1,21 @@
+[
+  {"word": "eraser", "ipa": "/ɪˈreɪzə(r)/", "chinese": "橡皮"},
+  {"word": "find", "ipa": "/faɪnd/", "chinese": "找到"},
+  {"word": "ruler", "ipa": "/ˈruːlə(r)/", "chinese": "直尺"},
+  {"word": "pen", "ipa": "/pen/", "chinese": "钢笔"},
+  {"word": "pencil", "ipa": "/ˈpensl/", "chinese": "铅笔"},
+  {"word": "book", "ipa": "/bʊk/", "chinese": "书"},
+  {"word": "bag", "ipa": "/bæɡ/", "chinese": "包"},
+  {"word": "paper", "ipa": "/ˈpeɪpə(r)/", "chinese": "纸"},
+  {"word": "these", "ipa": "/ðiːz/", "chinese": "这些"},
+  {"word": "see", "ipa": "/siː/", "chinese": "看见"},
+  {"word": "smell", "ipa": "/smel/", "chinese": "闻"},
+  {"word": "taste", "ipa": "/teɪst/", "chinese": "尝"},
+  {"word": "hear", "ipa": "/hɪə(r)/", "chinese": "听见"},
+  {"word": "touch", "ipa": "/tʌtʃ/", "chinese": "触摸"},
+  {"word": "learn", "ipa": "/lɜːn/", "chinese": "学习"},
+  {"word": "nose", "ipa": "/nəʊz/", "chinese": "鼻子"},
+  {"word": "tongue", "ipa": "/tʌŋ/", "chinese": "舌头"},
+  {"word": "class", "ipa": "/klɑːs/", "chinese": "课"},
+  {"word": "computer", "ipa": "/kəmˈpjuːtə(r)/", "chinese": "电脑"}
+]
