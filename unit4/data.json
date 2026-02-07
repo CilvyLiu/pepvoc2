@@ -1,0 +1,19 @@
+[
+  {"word": "breakfast", "ipa": "/ˈbrekfəst/", "chinese": "早餐"},
+  {"word": "time", "ipa": "/taɪm/", "chinese": "时间"},
+  {"word": "bread", "ipa": "/bred/", "chinese": "面包"},
+  {"word": "egg", "ipa": "/eɡ/", "chinese": "鸡蛋"},
+  {"word": "milk", "ipa": "/mɪlk/", "chinese": "牛奶"},
+  {"word": "noodle", "ipa": "/ˈnuːdl/", "chinese": "面条"},
+  {"word": "juice", "ipa": "/dʒuːs/", "chinese": "果汁"},
+  {"word": "rice", "ipa": "/raɪs/", "chinese": "大米；米饭"},
+  {"word": "meat", "ipa": "/miːt/", "chinese": "肉"},
+  {"word": "vegetable", "ipa": "/ˈvedʒtəbl/", "chinese": "蔬菜"},
+  {"word": "healthy", "ipa": "/ˈhelθi/", "chinese": "健康的"},
+  {"word": "plate", "ipa": "/pleɪt/", "chinese": "盘子"},
+  {"word": "soup", "ipa": "/suːp/", "chinese": "汤"},
+  {"word": "fruit", "ipa": "/fruːt/", "chinese": "水果"},
+  {"word": "colourful", "ipa": "/ˈkʌləfl/", "chinese": "五彩缤纷的"},
+  {"word": "candy", "ipa": "/ˈkændi/", "chinese": "糖果"},
+  {"word": "yummy", "ipa": "/ˈjʌmi/", "chinese": "好吃的"}
+]
