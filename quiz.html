@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>下册 | 单元测验</title>
+    <style>
+        :root { --primary: #4D96FF; --success: #6BCB77; --bg: #F0F2F5; }
+        body { font-family: 'Comic Sans MS', sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .quiz-container { background: white; width: 100%; max-width: 500px; border-radius: 24px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); box-sizing: border-box; display: none; }
+        .setup-container { background: white; width: 100%; max-width: 500px; border-radius: 24px; padding: 30px; text-align: center; }
+        .option-btn { width: 100%; background: #FFF; border: 2px solid #F0F0F0; padding: 18px; border-radius: 18px; margin-bottom: 10px; text-align: left; font-size: 16px; cursor: pointer; }
+        .correct { background: var(--success) !important; color: white; border-color: var(--success); }
+        .wrong { background: #FF6B6B !important; color: white; border-color: #FF6B6B; }
+        select { width: 100%; padding: 15px; border-radius: 12px; margin: 10px 0 20px; font-size: 16px; }
+        .btn-go { background: var(--primary); color: white; border: none; padding: 15px 40px; border-radius: 30px; font-weight: bold; width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>🚀 测验中心</h1>
+
+    <div id="setup-ui" class="setup-container">
+        <label>选择类型：</label>
+        <select id="type-select">
+            <option value="words">单词辨析 (Vocabulary)</option>
+            <option value="phrases">常用表达 (Expressions)</option>
+        </select>
+        <button class="btn-go" onclick="startQuiz()">开始挑战 (英音模式)</button>
+    </div>
+
+    <div id="quiz-ui" class="quiz-container">
+        <div id="question" style="font-size:20px; font-weight:bold; margin-bottom:20px;"></div>
+        <div id="options"></div>
+    </div>
+
+    <script>
+        let pool = [];
+        let current = 0;
+
+        function speak(text) {
+            const url = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=2`;
+            new Audio(url).play();
+        }
+
+        async function startQuiz() {
+            const mode = document.getElementById('type-select').value;
+            if(mode === 'words') {
+                const res = await Promise.all([1,2,3,4,5,6].map(u => fetch(`unit${u}/data.json`).then(r => r.json())));
+                pool = res.flat();
+            } else {
+                const res = await fetch('expressions_data.json');
+                const data = await res.json();
+                pool = Object.values(data).flat();
+            }
+            pool.sort(() => Math.random() - 0.5);
+            pool = pool.slice(0, 10);
+            document.getElementById('setup-ui').style.display = 'none';
+            document.getElementById('quiz-ui').style.display = 'block';
+            showQuest();
+        }
+
+        function showQuest() {
+            const item = pool[current];
+            const qText = item.word || item.en;
+            const aText = item.chinese || item.zh;
+            document.getElementById('question').innerText = `“${aText}”的正确英文是？`;
+            
+            let choices = [qText];
+            while(choices.length < 4) {
+                let r = pool[Math.floor(Math.random()*pool.length)];
+                let rText = r.word || r.en;
+                if(!choices.includes(rText)) choices.push(rText);
+            }
+            choices.sort(() => Math.random() - 0.5);
+
+            const box = document.getElementById('options');
+            box.innerHTML = '';
+            choices.forEach(c => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = c;
+                btn.onclick = () => {
+                    if(c === qText) {
+                        btn.classList.add('correct');
+                        speak(qText);
+                    } else {
+                        btn.classList.add('wrong');
+                    }
+                    setTimeout(() => { current++; if(current<10) showQuest(); else location.reload(); }, 1500);
+                };
+                box.appendChild(btn);
+            });
+        }
+    </script>
+</body>
+</html>
