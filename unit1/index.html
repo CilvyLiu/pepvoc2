@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>U1 - My Name</title>
+    <style>
+        :root { --primary: #4D96FF; --bg: #F0F5FF; --accent: #FFD93D; }
+        body { font-family: 'Comic Sans MS', sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { width: 100%; max-width: 500px; text-align: center; margin-bottom: 20px; }
+        .badge { background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; font-weight: bold; }
+        h1 { color: #2D3436; margin: 10px 0; font-size: 24px; }
+        .container { width: 100%; max-width: 500px; display: grid; gap: 12px; }
+        .card { background: white; border-radius: 20px; padding: 18px; display: flex; align-items: center; box-shadow: 0 6px 12px rgba(77,150,255,0.1); border: 2px solid transparent; transition: 0.1s; cursor: pointer; }
+        .card:active { transform: scale(0.96); border-color: var(--primary); }
+        .info { flex: 1; }
+        .en { font-size: 22px; font-weight: bold; color: #333; }
+        .ipa { font-size: 13px; color: #999; margin: 2px 0; }
+        .zh { font-size: 15px; color: #666; }
+        .icon { font-size: 24px; margin-left: 10px; opacity: 0.8; }
+        .nav { position: fixed; bottom: 0; width: 100%; max-width: 500px; background: white; display: flex; border-top: 1px solid #EEE; }
+        .nav-a { flex: 1; text-align: center; padding: 15px; text-decoration: none; color: #BBB; font-weight: bold; }
+        .nav-a.active { color: var(--primary); border-top: 3px solid var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="badge">🌍 Global Explorer</span>
+        <h1>Unit 1: My Name</h1>
+        <a href="../index.html" style="color:var(--primary); text-decoration:none; font-size:14px;">⇠ Back Home</a>
+    </div>
+    <div class="container" id="list">Loading...</div>
+    <div style="height: 70px;"></div>
+    <nav class="nav">
+        <a href="#" class="nav-a active">Words</a>
+        <a href="../expressions.html?u=unit1" class="nav-a">Expressions</a>
+    </nav>
+    <script>
+        function speak(text) {
+            const audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=2`);
+            audio.play();
+        }
+        async function init() {
+            const res = await fetch('data.json');
+            const data = await res.json();
+            const list = document.getElementById('list');
+            list.innerHTML = '';
+            data.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.onclick = () => speak(item.word);
+                div.innerHTML = `<div class="info"><div class="en">${item.word}</div><div class="ipa">${item.ipa}</div><div class="zh">${item.chinese}</div></div><div class="icon">📢</div>`;
+                list.appendChild(div);
+            });
+        }
+        document.addEventListener('touchstart', () => { window.speechSynthesis.speak(new SpeechSynthesisUtterance("")); }, { once: true });
+        init();
+    </script>
+</body>
+</html>
