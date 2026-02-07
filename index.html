@@ -3,41 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nova's Junior Lab | 下册</title>
+    <title>Junior Explorer | Nova's Lab</title>
     <style>
-        :root { --primary: #4D96FF; --bg: #F0F5FF; --dark: #2D3436; }
-        body { font-family: 'Comic Sans MS', sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        :root { --primary: #4D96FF; --bg: #F0F5FF; --card: rgba(255, 255, 255, 0.9); }
+        body { 
+            font-family: 'Comic Sans MS', 'PingFang SC', sans-serif; 
+            background: linear-gradient(135deg, #F0F5FF 0%, #E9EFFF 100%); 
+            margin: 0; padding: 20px; min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; 
+        }
         header { text-align: center; margin-bottom: 30px; }
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; width: 100%; max-width: 500px; }
+        h1 { color: #2D3436; font-size: 28px; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .tag { background: var(--primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+
+        .grid { 
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; 
+            width: 100%; max-width: 500px; 
+        }
         .unit-card { 
-            background: white; border-radius: 20px; padding: 25px 10px; text-decoration: none; color: #333;
-            box-shadow: 0 5px 15px rgba(77,150,255,0.1); border: 2px solid #E0E8FF; text-align: center; transition: 0.2s;
+            background: var(--card); backdrop-filter: blur(10px);
+            border-radius: 24px; padding: 25px 15px; text-decoration: none; 
+            color: #333; text-align: center; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 10px 20px rgba(77,150,255,0.1);
         }
-        .unit-card:active { transform: scale(0.95); background: #F0F5FF; }
-        .unit-num { font-size: 12px; color: var(--primary); font-weight: bold; display: block; }
-        .unit-title { font-size: 18px; font-weight: bold; margin-top: 5px; display: block; }
-        .btn-main { 
-            background: var(--dark); color: white; width: 100%; max-width: 500px; padding: 18px; 
-            border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 25px; text-align: center;
+        .unit-card:active { transform: scale(0.92); background: #FFF; }
+        .unit-num { font-size: 11px; color: var(--primary); font-weight: 800; letter-spacing: 1px; }
+        .unit-title { font-size: 17px; font-weight: bold; margin-top: 8px; display: block; color: #2D3436; }
+
+        .quiz-btn { 
+            background: #2D3436; color: white; width: 100%; max-width: 500px; 
+            padding: 20px; border-radius: 50px; text-decoration: none; 
+            font-weight: bold; margin-top: 30px; text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: 0.2s;
         }
+        .quiz-btn:active { transform: translateY(3px); }
     </style>
 </head>
 <body>
     <header>
-        <h1 style="color:var(--primary); margin:0;">🚀 Junior Explorer</h1>
-        <p style="color:#666;">Volume 2 · 下册实验室</p>
+        <span class="tag">VOLUME 2</span>
+        <h1>🚀 Junior Explorer</h1>
+        <p style="color:#636E72; font-size:14px;">下册 单词与表达实验室</p>
     </header>
 
     <div class="grid">
-        <a href="unit1/index.html" class="unit-card"><span class="unit-num">UNIT 1</span><span class="unit-title">My Name</span></a>
-        <a href="unit2/index.html" class="unit-card"><span class="unit-num">UNIT 2</span><span class="unit-title">My Body</span></a>
-        <a href="unit3/index.html" class="unit-card"><span class="unit-num">UNIT 3</span><span class="unit-title">School Tools</span></a>
-        <a href="unit4/index.html" class="unit-card"><span class="unit-num">UNIT 4</span><span class="unit-title">Yummy Food</span></a>
-        <a href="unit5/index.html" class="unit-card"><span class="unit-num">UNIT 5</span><span class="unit-title">Old Things</span></a>
-        <a href="unit6/index.html" class="unit-card"><span class="unit-num">UNIT 6</span><span class="unit-title">Numbers</span></a>
+        <a href="expressions.html?u=unit1" class="unit-card"><span class="unit-num">UNIT 1</span><span class="unit-title">Hello!</span></a>
+        <a href="expressions.html?u=unit2" class="unit-card"><span class="unit-num">UNIT 2</span><span class="unit-title">My Body</span></a>
+        <a href="expressions.html?u=unit3" class="unit-card"><span class="unit-num">UNIT 3</span><span class="unit-title">School</span></a>
+        <a href="expressions.html?u=unit4" class="unit-card"><span class="unit-num">UNIT 4</span><span class="unit-title">Yummy</span></a>
+        <a href="expressions.html?u=unit5" class="unit-card"><span class="unit-num">UNIT 5</span><span class="unit-title">Old Things</span></a>
+        <a href="expressions.html?u=unit6" class="unit-card"><span class="unit-num">UNIT 6</span><span class="unit-title">Numbers</span></a>
     </div>
 
-    <a href="quiz.html" class="btn-main">✍️ 下册综合单元测验</a>
+    <a href="quiz.html" class="quiz-btn">✍️ 下册综合单元测验</a>
 
     <script>
         document.addEventListener('touchstart', () => {
