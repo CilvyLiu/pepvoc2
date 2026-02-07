@@ -1,0 +1,49 @@
+{
+  "unit1": [
+    {"en": "What's your name?", "zh": "你叫什么名字？", "scene": "初次见面"},
+    {"en": "My name's Amy Green.", "zh": "我叫埃米·格林。", "scene": "自我介绍"},
+    {"en": "Where are you from?", "zh": "你是哪里人？", "scene": "询问籍贯"},
+    {"en": "I'm from the UK.", "zh": "我是英国人。", "scene": "介绍国籍"},
+    {"en": "Let me help.", "zh": "我来帮忙。", "scene": "主动提供帮助"},
+    {"en": "After you!", "zh": "您先请！", "scene": "礼貌礼仪"},
+    {"en": "You're welcome.", "zh": "别客气。", "scene": "回应谢意"},
+    {"en": "Who's that girl?", "zh": "那个女孩是谁？", "scene": "询问他人"},
+    {"en": "That's our new neighbour, Amy.", "zh": "是我们的新邻居埃米。", "scene": "介绍他人"}
+  ],
+  "unit2": [
+    {"en": "It has a long body and short legs.", "zh": "它有长长的身体和短短的腿。", "scene": "描述外貌"},
+    {"en": "Dogs are friendly.", "zh": "狗是友善的。", "scene": "描述特征"},
+    {"en": "Do you often say that to your mum?", "zh": "你经常对妈妈那么说吗？", "scene": "询问习惯"},
+    {"en": "I often make her gifts.", "zh": "我经常给她做礼物。", "scene": "表达爱意"},
+    {"en": "We express ourselves in many ways.", "zh": "我们用很多种方式表达自己。", "scene": "总结"}
+  ],
+  "unit3": [
+    {"en": "Excuse me.", "zh": "劳驾/打扰一下。", "scene": "礼貌开口"},
+    {"en": "Can I use your eraser, please?", "zh": "我能用一下你的橡皮吗？", "scene": "请求借用"},
+    {"en": "Sure. Here you are.", "zh": "当然。给你。", "scene": "出借物品"},
+    {"en": "No problem.", "zh": "没问题。", "scene": "回应请求"},
+    {"en": "What are these?", "zh": "这些是什么？", "scene": "询问复数物品"},
+    {"en": "They're grapes.", "zh": "这些是葡萄。", "scene": "辨认物品"}
+  ],
+  "unit4": [
+    {"en": "I'd like some bread and eggs, please.", "zh": "我想吃点儿面包和鸡蛋。", "scene": "点餐/表达意愿"},
+    {"en": "Have some milk too.", "zh": "也喝点儿牛奶吧。", "scene": "饮食建议"},
+    {"en": "Would you like some rice and meat?", "zh": "要吃点儿米饭和肉吗？", "scene": "询问意愿"},
+    {"en": "Eat some every day!", "zh": "每天吃一些吧！", "scene": "健康忠告"}
+  ],
+  "unit5": [
+    {"en": "Do you have old things?", "zh": "你有旧东西吗？", "scene": "询问拥有物"},
+    {"en": "Yes, I do. I have some old books.", "zh": "是的。我有些旧书。", "scene": "回答拥有物"},
+    {"en": "This boat is cool.", "zh": "这只船很酷。", "scene": "称赞"},
+    {"en": "You can keep it.", "zh": "你可以留着它。", "scene": "赠送/保留"},
+    {"en": "Mum, where is my animal book?", "zh": "妈妈，我的动物书在哪儿？", "scene": "寻找物品"},
+    {"en": "Is it on the shelf?", "zh": "在架子上吗？", "scene": "询问位置"}
+  ],
+  "unit6": [
+    {"en": "How many books do we have?", "zh": "我们有多少本书？", "scene": "询问数量"},
+    {"en": "We have fifteen books.", "zh": "我们有十五本书。", "scene": "回答数量"},
+    {"en": "How much is this bag?", "zh": "这个包多少钱？", "scene": "询问价格"},
+    {"en": "It's twenty yuan.", "zh": "二十元。", "scene": "回答价格"},
+    {"en": "Six yuan, or three for seventeen yuan.", "zh": "六元，或者十七元三本。", "scene": "议价"}
+  ]
+}
