@@ -3,61 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Junior Explorer | Nova's Lab</title>
+    <title>Nova's Lab | Junior Explorer</title>
     <style>
-        :root { --primary: #4D96FF; --bg: #F0F5FF; --card: rgba(255, 255, 255, 0.9); }
+        :root { 
+            --primary: #4D96FF; 
+            --secondary: #6BCB77;
+            --bg: #F0F5FF; 
+            --dark: #2D3436;
+        }
         body { 
             font-family: 'Comic Sans MS', 'PingFang SC', sans-serif; 
             background: linear-gradient(135deg, #F0F5FF 0%, #E9EFFF 100%); 
             margin: 0; padding: 20px; min-height: 100vh;
             display: flex; flex-direction: column; align-items: center; 
         }
+        
         header { text-align: center; margin-bottom: 30px; }
-        h1 { color: #2D3436; font-size: 28px; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .tag { background: var(--primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        h1 { color: var(--dark); font-size: 28px; margin: 0; }
+        .vol-tag { background: var(--primary); color: white; padding: 2px 10px; border-radius: 10px; font-size: 12px; vertical-align: middle; }
 
         .grid { 
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; 
             width: 100%; max-width: 500px; 
         }
-        .unit-card { 
-            background: var(--card); backdrop-filter: blur(10px);
-            border-radius: 24px; padding: 25px 15px; text-decoration: none; 
-            color: #333; text-align: center; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 10px 20px rgba(77,150,255,0.1);
-        }
-        .unit-card:active { transform: scale(0.92); background: #FFF; }
-        .unit-num { font-size: 11px; color: var(--primary); font-weight: 800; letter-spacing: 1px; }
-        .unit-title { font-size: 17px; font-weight: bold; margin-top: 8px; display: block; color: #2D3436; }
 
-        .quiz-btn { 
-            background: #2D3436; color: white; width: 100%; max-width: 500px; 
-            padding: 20px; border-radius: 50px; text-decoration: none; 
-            font-weight: bold; margin-top: 30px; text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: 0.2s;
+        /* 单元卡片美化 */
+        .unit-card { 
+            background: white; border-radius: 24px; padding: 20px 10px; 
+            text-decoration: none; color: #333; text-align: center; 
+            box-shadow: 0 10px 20px rgba(77,150,255,0.1);
+            border: 1px solid rgba(255,255,255,0.8); transition: 0.3s;
+            display: flex; flex-direction: column; gap: 8px;
         }
-        .quiz-btn:active { transform: translateY(3px); }
+        .unit-card:active { transform: scale(0.95); }
+        
+        .unit-num { font-size: 11px; color: var(--primary); font-weight: 900; }
+        .unit-title { font-size: 18px; font-weight: bold; color: var(--dark); }
+
+        /* 卡片内部分组按钮 */
+        .card-actions { display: flex; gap: 5px; margin-top: 10px; justify-content: center; }
+        .action-btn { 
+            font-size: 11px; padding: 6px 10px; border-radius: 12px; 
+            text-decoration: none; font-weight: bold;
+        }
+        .btn-word { background: #E9F2FF; color: var(--primary); }
+        .btn-exp { background: #E6FFED; color: var(--secondary); }
+
+        /* 底部大按钮区 */
+        .footer-nav { width: 100%; max-width: 500px; margin-top: 25px; display: flex; flex-direction: column; gap: 12px; }
+        
+        .main-link { 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 18px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.2s;
+        }
+        .bg-dark { background: var(--dark); color: white; box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+        .bg-blue { background: var(--primary); color: white; box-shadow: 0 8px 15px rgba(77,150,255,0.3); }
+        
+        .main-link:active { transform: translateY(2px); filter: brightness(1.1); }
     </style>
 </head>
 <body>
+
     <header>
-        <span class="tag">VOLUME 2</span>
-        <h1>🚀 Junior Explorer</h1>
-        <p style="color:#636E72; font-size:14px;">下册 单词与表达实验室</p>
+        <h1>🚀 Junior Explorer <span class="vol-tag">下册</span></h1>
+        <p style="color:#636E72; font-size:14px; margin-top:5px;">Nova's Vocabulary & Expression Lab</p>
     </header>
 
     <div class="grid">
-        <a href="expressions.html?u=unit1" class="unit-card"><span class="unit-num">UNIT 1</span><span class="unit-title">Hello!</span></a>
-        <a href="expressions.html?u=unit2" class="unit-card"><span class="unit-num">UNIT 2</span><span class="unit-title">My Body</span></a>
-        <a href="expressions.html?u=unit3" class="unit-card"><span class="unit-num">UNIT 3</span><span class="unit-title">School</span></a>
-        <a href="expressions.html?u=unit4" class="unit-card"><span class="unit-num">UNIT 4</span><span class="unit-title">Yummy</span></a>
-        <a href="expressions.html?u=unit5" class="unit-card"><span class="unit-num">UNIT 5</span><span class="unit-title">Old Things</span></a>
-        <a href="expressions.html?u=unit6" class="unit-card"><span class="unit-num">UNIT 6</span><span class="unit-title">Numbers</span></a>
+        <div class="unit-card">
+            <span class="unit-num">UNIT 1</span>
+            <span class="unit-title">Hello!</span>
+            <div class="card-actions">
+                <a href="unit1/index.html" class="action-btn btn-word">单词</a>
+                <a href="expressions.html?u=unit1" class="action-btn btn-exp">表达</a>
+            </div>
+        </div>
+
+        <div class="unit-card">
+            <span class="unit-num">UNIT 2</span>
+            <span class="unit-title">My Body</span>
+            <div class="card-actions">
+                <a href="unit2/index.html" class="action-btn btn-word">单词</a>
+                <a href="expressions.html?u=unit2" class="action-btn btn-exp">表达</a>
+            </div>
+        </div>
+
+        <div class="unit-card">
+            <span class="unit-num">UNIT 3</span>
+            <span class="unit-title">School</span>
+            <div class="card-actions">
+                <a href="unit3/index.html" class="action-btn btn-word">单词</a>
+                <a href="expressions.html?u=unit3" class="action-btn btn-exp">表达</a>
+            </div>
+        </div>
+
+        <div class="unit-card">
+            <span class="unit-num">UNIT 4</span>
+            <span class="unit-title">Yummy</span>
+            <div class="card-actions">
+                <a href="unit4/index.html" class="action-btn btn-word">单词</a>
+                <a href="expressions.html?u=unit4" class="action-btn btn-exp">表达</a>
+            </div>
+        </div>
+
+        <div class="unit-card">
+            <span class="unit-num">UNIT 5</span>
+            <span class="unit-title">Old Things</span>
+            <div class="card-actions">
+                <a href="unit5/index.html" class="action-btn btn-word">单词</a>
+                <a href="expressions.html?u=unit5" class="action-btn btn-exp">表达</a>
+            </div>
+        </div>
+
+        <div class="unit-card">
+            <span class="unit-num">UNIT 6</span>
+            <span class="unit-title">Numbers</span>
+            <div class="card-actions">
+                <a href="unit6/index.html" class="action-btn btn-word">单词</a>
+                <a href="expressions.html?u=unit6" class="action-btn btn-exp">表达</a>
+            </div>
+        </div>
     </div>
 
-    <a href="quiz.html" class="quiz-btn">✍️ 下册综合单元测验</a>
+    <div class="footer-nav">
+        <a href="expressions.html" class="main-link bg-blue">
+            <span>🗣️ 常用表达实验室 (全单元)</span>
+        </a>
+        <a href="quiz.html" class="main-link bg-dark">
+            <span>✍️ 下册全册综合测验</span>
+        </a>
+    </div>
 
     <script>
+        // 解锁音频
         document.addEventListener('touchstart', () => {
             window.speechSynthesis.speak(new SpeechSynthesisUtterance(""));
         }, { once: true });
