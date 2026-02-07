@@ -3,134 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nova's Lab | Junior Explorer</title>
+    <title>Junior Explorer | Nova's Lab</title>
     <style>
-        :root { 
-            --primary: #4D96FF; 
-            --secondary: #6BCB77;
-            --bg: #F0F5FF; 
-            --dark: #2D3436;
+        :root {
+            --bg-gradient: linear-gradient(45deg, #f3f7ff, #eef1f5, #fdfbff);
+            --glass: rgba(255, 255, 255, 0.7);
+            --u1: #4D96FF; --u2: #FF6B6B; --u3: #FFB319;
+            --u4: #6BCB77; --u5: #4FACFE; --u6: #A29BFE;
         }
-        body { 
-            font-family: 'Comic Sans MS', 'PingFang SC', sans-serif; 
-            background: linear-gradient(135deg, #F0F5FF 0%, #E9EFFF 100%); 
+
+        body {
+            font-family: 'Comic Sans MS', 'PingFang SC', system-ui, sans-serif;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             margin: 0; padding: 20px; min-height: 100vh;
-            display: flex; flex-direction: column; align-items: center; 
-        }
-        
-        header { text-align: center; margin-bottom: 30px; }
-        h1 { color: var(--dark); font-size: 28px; margin: 0; }
-        .vol-tag { background: var(--primary); color: white; padding: 2px 10px; border-radius: 10px; font-size: 12px; vertical-align: middle; }
-
-        .grid { 
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; 
-            width: 100%; max-width: 500px; 
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        /* 单元卡片美化 */
-        .unit-card { 
-            background: white; border-radius: 24px; padding: 20px 10px; 
-            text-decoration: none; color: #333; text-align: center; 
-            box-shadow: 0 10px 20px rgba(77,150,255,0.1);
-            border: 1px solid rgba(255,255,255,0.8); transition: 0.3s;
-            display: flex; flex-direction: column; gap: 8px;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .unit-card:active { transform: scale(0.95); }
-        
-        .unit-num { font-size: 11px; color: var(--primary); font-weight: 900; }
-        .unit-title { font-size: 18px; font-weight: bold; color: var(--dark); }
 
-        /* 卡片内部分组按钮 */
-        .card-actions { display: flex; gap: 5px; margin-top: 10px; justify-content: center; }
-        .action-btn { 
-            font-size: 11px; padding: 6px 10px; border-radius: 12px; 
-            text-decoration: none; font-weight: bold;
+        header { text-align: center; margin: 20px 0 40px; position: relative; }
+        
+        /* 标题动态阴影 */
+        h1 { 
+            color: #2D3436; font-size: 32px; margin: 0; 
+            font-weight: 900; letter-spacing: -1px;
+            background: linear-gradient(90deg, #4D96FF, #A29BFE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .btn-word { background: #E9F2FF; color: var(--primary); }
-        .btn-exp { background: #E6FFED; color: var(--secondary); }
 
-        /* 底部大按钮区 */
-        .footer-nav { width: 100%; max-width: 500px; margin-top: 25px; display: flex; flex-direction: column; gap: 12px; }
-        
-        .main-link { 
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 18px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.2s;
+        .vol-tag { 
+            background: #2D3436; color: white; padding: 3px 12px; 
+            border-radius: 50px; font-size: 12px; position: absolute;
+            top: -15px; right: -20px; transform: rotate(10deg);
         }
-        .bg-dark { background: var(--dark); color: white; box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-        .bg-blue { background: var(--primary); color: white; box-shadow: 0 8px 15px rgba(77,150,255,0.3); }
-        
-        .main-link:active { transform: translateY(2px); filter: brightness(1.1); }
+
+        .grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+            width: 100%; max-width: 500px;
+        }
+
+        /* 玻璃拟态卡片 */
+        .unit-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 28px; padding: 25px 15px;
+            text-decoration: none; position: relative;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .unit-card:active { transform: scale(0.9); }
+
+        /* 各单元专属光晕 */
+        .u1 { border-bottom: 5px solid var(--u1); }
+        .u2 { border-bottom: 5px solid var(--u2); }
+        .u3 { border-bottom: 5px solid var(--u3); }
+        .u4 { border-bottom: 5px solid var(--u4); }
+        .u5 { border-bottom: 5px solid var(--u5); }
+        .u6 { border-bottom: 5px solid var(--u6); }
+
+        .unit-num { font-size: 10px; font-weight: 800; opacity: 0.5; letter-spacing: 2px; }
+        .unit-title { font-size: 20px; font-weight: bold; margin: 5px 0 15px; color: #333; }
+
+        /* 胶囊按钮 */
+        .card-actions { display: flex; gap: 8px; width: 100%; }
+        .action-btn {
+            flex: 1; padding: 10px 0; border-radius: 15px;
+            text-align: center; font-size: 12px; font-weight: bold;
+            text-decoration: none; transition: 0.2s;
+        }
+        .btn-word { background: #2D3436; color: white; }
+        .btn-exp { background: white; color: #2D3436; border: 1px solid #EEE; }
+
+        /* 底部导航 */
+        .footer-nav { 
+            width: 100%; max-width: 500px; margin-top: 40px; 
+            display: flex; flex-direction: column; gap: 15px; 
+        }
+
+        .main-link {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            padding: 22px; border-radius: 25px; text-decoration: none;
+            font-weight: 900; font-size: 16px; transition: 0.3s;
+        }
+
+        .bg-blue { 
+            background: linear-gradient(90deg, #4FACFE 0%, #00F2FE 100%);
+            color: white; box-shadow: 0 10px 20px rgba(79,172,254,0.3);
+        }
+
+        .bg-dark { 
+            background: #2D3436; color: white; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .main-link:active { transform: translateY(4px); box-shadow: none; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🚀 Junior Explorer <span class="vol-tag">下册</span></h1>
-        <p style="color:#636E72; font-size:14px; margin-top:5px;">Nova's Vocabulary & Expression Lab</p>
+        <span class="vol-tag">VOL.2</span>
+        <h1>Junior Explorer</h1>
+        <p style="color:#636E72; font-size:14px; margin-top:8px; letter-spacing:1px;">Nova's Lab · 英语实验室</p>
     </header>
 
     <div class="grid">
-        <div class="unit-card">
-            <span class="unit-num">UNIT 1</span>
-            <span class="unit-title">Hello!</span>
+        <div class="unit-card u1">
+            <span class="unit-num">UNIT 01</span>
+            <span class="unit-title">Hello! 🌍</span>
             <div class="card-actions">
-                <a href="unit1/index.html" class="action-btn btn-word">单词</a>
-                <a href="expressions.html?u=unit1" class="action-btn btn-exp">表达</a>
+                <a href="unit1/index.html" class="action-btn btn-word">单词库</a>
+                <a href="expressions.html?u=unit1" class="action-btn btn-exp">练表达</a>
             </div>
         </div>
 
-        <div class="unit-card">
-            <span class="unit-num">UNIT 2</span>
-            <span class="unit-title">My Body</span>
+        <div class="unit-card u2">
+            <span class="unit-num">UNIT 02</span>
+            <span class="unit-title">Body 💪</span>
             <div class="card-actions">
-                <a href="unit2/index.html" class="action-btn btn-word">单词</a>
-                <a href="expressions.html?u=unit2" class="action-btn btn-exp">表达</a>
+                <a href="unit2/index.html" class="action-btn btn-word">单词库</a>
+                <a href="expressions.html?u=unit2" class="action-btn btn-exp">练表达</a>
             </div>
         </div>
 
-        <div class="unit-card">
-            <span class="unit-num">UNIT 3</span>
-            <span class="unit-title">School</span>
+        <div class="unit-card u3">
+            <span class="unit-num">UNIT 03</span>
+            <span class="unit-title">School 🎒</span>
             <div class="card-actions">
-                <a href="unit3/index.html" class="action-btn btn-word">单词</a>
-                <a href="expressions.html?u=unit3" class="action-btn btn-exp">表达</a>
+                <a href="unit3/index.html" class="action-btn btn-word">单词库</a>
+                <a href="expressions.html?u=unit3" class="action-btn btn-exp">练表达</a>
             </div>
         </div>
 
-        <div class="unit-card">
-            <span class="unit-num">UNIT 4</span>
-            <span class="unit-title">Yummy</span>
+        <div class="unit-card u4">
+            <span class="unit-num">UNIT 04</span>
+            <span class="unit-title">Yummy 🍎</span>
             <div class="card-actions">
-                <a href="unit4/index.html" class="action-btn btn-word">单词</a>
-                <a href="expressions.html?u=unit4" class="action-btn btn-exp">表达</a>
+                <a href="unit4/index.html" class="action-btn btn-word">单词库</a>
+                <a href="expressions.html?u=unit4" class="action-btn btn-exp">练表达</a>
             </div>
         </div>
 
-        <div class="unit-card">
-            <span class="unit-num">UNIT 5</span>
-            <span class="unit-title">Old Things</span>
+        <div class="unit-card u5">
+            <span class="unit-num">UNIT 05</span>
+            <span class="unit-title">Things 📦</span>
             <div class="card-actions">
-                <a href="unit5/index.html" class="action-btn btn-word">单词</a>
-                <a href="expressions.html?u=unit5" class="action-btn btn-exp">表达</a>
+                <a href="unit5/index.html" class="action-btn btn-word">单词库</a>
+                <a href="expressions.html?u=unit5" class="action-btn btn-exp">练表达</a>
             </div>
         </div>
 
-        <div class="unit-card">
-            <span class="unit-num">UNIT 6</span>
-            <span class="unit-title">Numbers</span>
+        <div class="unit-card u6">
+            <span class="unit-num">UNIT 06</span>
+            <span class="unit-title">Math 🪙</span>
             <div class="card-actions">
-                <a href="unit6/index.html" class="action-btn btn-word">单词</a>
-                <a href="expressions.html?u=unit6" class="action-btn btn-exp">表达</a>
+                <a href="unit6/index.html" class="action-btn btn-word">单词库</a>
+                <a href="expressions.html?u=unit6" class="action-btn btn-exp">练表达</a>
             </div>
         </div>
     </div>
 
     <div class="footer-nav">
         <a href="expressions.html" class="main-link bg-blue">
-            <span>🗣️ 常用表达实验室 (全单元)</span>
+            <span>🗣️ 常用表达全集</span>
         </a>
         <a href="quiz.html" class="main-link bg-dark">
-            <span>✍️ 下册全册综合测验</span>
+            <span>✍️ 综合单元挑战测验</span>
         </a>
     </div>
 
